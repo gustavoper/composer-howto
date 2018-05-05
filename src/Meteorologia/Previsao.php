@@ -22,7 +22,7 @@ class Previsao
 		$this->appId      = "1073c253a0f5dfe954702b19462aeef3";
 	}
 
-	public function getPrevisao($data)
+	public function getPrevisao(array $data) : string
 	{	
 		$client = new \GuzzleHttp\Client();
 		$res = $client->request('GET', $this->weatherUrl, [
