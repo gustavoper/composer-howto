@@ -18,7 +18,7 @@
 		
 		<div class="form-group">
 			<label for="cidade"> Estado: </label>	
-			<input type="text"  class="form-control" name="Estado" value="SP">
+			<input type="text"  class="form-control" name="estado" value="SP">
 		</div>			
 		
 		

@@ -1,4 +1,13 @@
 <?php
+/**
+ *
+ *  exemplo utilizando o Composer.
+ *
+ *  Faremos a revisão dessa solução nos próximos how-tos!
+ *
+ */
+
+
 namespace Meteorologia; 
 
 class Previsao
@@ -19,10 +28,22 @@ class Previsao
 		$res = $client->request('GET', $this->weatherUrl, [
 			'query' => [
 				'appid' => $this->appId,
-				'id'	=> '3465059'
+				'q'	    => $this->buildQuery($data)
 			]
 		]);
-		//$res->getStatusCode();
 		return $res->getBody();
 	}
+
+
+	public function buildQuery(array $inputValues) : string
+    {
+        $parsedData = [];
+        $allowedValues = ['cidade','estado','pais'];
+        foreach ($allowedValues as $allowedValue) {
+            if ($inputValues[$allowedValue]) {
+                $parsedData[] = $inputValues[$allowedValue];
+            }
+        }
+        return implode(",", $parsedData);
+    }
 }
